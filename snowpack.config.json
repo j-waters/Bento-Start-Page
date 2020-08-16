@@ -1,0 +1,14 @@
+{
+	"scripts": {
+		"mount:public": "mount public --to /",
+		"mount:src": "mount src --to /dist",
+		"run:tsc": "tsc --noEmit",
+		"run:tsc::watch": "$1 --watch",
+		"run:css": "node-sass src/css/style.scss public/css/style.css",
+		"run:css::watch": "$1 --watch"
+	},
+	"plugins": ["@snowpack/plugin-dotenv"],
+	"buildOptions": {
+		"metaDir": "snowpack"
+	}
+}
