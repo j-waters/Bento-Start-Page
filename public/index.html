@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>New tab</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="container" class="container hidden">
+            <div class="hour">
+                <div class="clock">
+                    <div id="hour"></div>
+                    <div class="separator">:</div>
+                    <div id="minutes"></div>
+					<div class="separator">:</div>
+					<div id="seconds"></div>
+                </div>
+                <div id="greetings"></div>
+            </div>
+            <div class="secon">
+                <div class="secon__date">
+                    <div id="month"></div>
+                    <div id="day"></div>
+                </div>
+                <div id="weather" class="secon__weather hidden">
+                    <div class="weather-icon">
+                        <img src="icons/unknown.png" />
+                    </div>
+                    <div class="temperature-value">
+                        <p>- °<span>c</span></p>
+                    </div>
+                    <div class="temperature-description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div id="main" class="qlink"></div>
+
+            <div id="list1" class="card qlist qlist__3">
+                <i class="qlist__head" data-feather="briefcase"></i>
+            </div>
+
+            <div id="list2" class="card qlist qlist__4">
+                <i class="qlist__head" data-feather="coffee"></i>
+            </div>
+        </div>
+		<script type="module" src="/dist/index.js"></script>
+    </body>
+</html>
