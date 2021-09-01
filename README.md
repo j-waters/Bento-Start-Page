@@ -1,18 +1,24 @@
-# Bento
+# clean-start-page
 
-> ### 🍱 A Clean and Simple Startpage
+## Project setup
+```
+yarn install
+```
 
-Fork of [MiguelRAvila/Bento](https://github.com/MiguelRAvila/Bento)
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-#### Features:
+### Compiles and minifies for production
+```
+yarn build
+```
 
--   **Clock and Date** functions
--   **Greetings**: easy to change and modify
--   **Variables** for custom colors in the `css` code
--   **Modular** TypeScript files for an easy read
+### Lints and fixes files
+```
+yarn lint
+```
 
-### Usage:
-
-1. `snowpack build`
-2. Copy `manifest.json` -> `build/`
-3. `chrome://extensions` -> `enable dev mode` -> `load unpacked` -> `select build/`
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
