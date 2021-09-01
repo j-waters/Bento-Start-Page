@@ -46,12 +46,17 @@ const MAIN_LINKS = [
 ]
 
 const LIST_LINKS_ONE = [
-  {url: 'https://secure.ecs.soton.ac.uk', label: 'ECS'}
+  {url: 'https://secure.ecs.soton.ac.uk', label: 'ECS'},
+  {url: 'https://home.blackboard.soton.ac.uk/', label: 'Blackboard'},
+  {url: 'https://notion.so', label: 'Notion'}
 ]
 
 const LIST_LINKS_TWO = [
   {url: 'https://smile.amazon.co.uk', label: 'Amazon'},
   {url: 'https://reddit.com/', label: 'Reddit'},
+  {url: 'https://twoseven.xyz/', label: 'TwoSeven'},
+  {url: 'https://netflix.com', label: 'Netflix'},
+  {url: 'https://messenger.com', label: 'Messenger'}
 ]
 
 export default function setLinks() {
