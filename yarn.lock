@@ -2396,6 +2396,11 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
+bulma@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
+  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
@@ -2638,6 +2643,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.5:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-css@4.2.x:
   version "4.2.3"
@@ -2962,7 +2972,7 @@ core-js-compat@^3.14.0, core-js-compat@^3.16.0, core-js-compat@^3.6.5:
     browserslist "^4.16.8"
     semver "7.0.0"
 
-core-js@^3.6.5:
+core-js@^3.1.3, core-js@^3.6.5:
   version "3.17.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.17.1.tgz#b39e086f413789cf2ca4680c4ecd1b36a50ba277"
   integrity sha512-C8i/FNpVN2Ti89QIJcFn9ZQmnM+HaAQr2OpE+ja3TRM9Q34FigsGlAVuwPGkIgydSVClo/1l1D1grP8LVt9IYA==
@@ -4119,6 +4129,14 @@ faye-websocket@^0.11.3:
   integrity sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==
   dependencies:
     websocket-driver ">=0.5.1"
+
+feather-icons@^4.28.0:
+  version "4.28.0"
+  resolved "https://registry.yarnpkg.com/feather-icons/-/feather-icons-4.28.0.tgz#e1892a401fe12c4559291770ff6e68b0168e760f"
+  integrity sha512-gRdqKESXRBUZn6Nl0VBq2wPHKRJgZz7yblrrc2lYsS6odkNFDnA4bqvrlEVRUPjE1tFax+0TdbJKZ31ziJuzjg==
+  dependencies:
+    classnames "^2.2.5"
+    core-js "^3.1.3"
 
 figgy-pudding@^3.5.1:
   version "3.5.2"
@@ -6096,6 +6114,11 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
+node-fetch@^2.6.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
 node-forge@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.10.0.tgz#32dea2afb3e9926f02ee5ce8794902691a676bf3"
@@ -6357,6 +6380,13 @@ opener@^1.5.1:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
   integrity sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
+
+openweathermap-ts@^1.2.10:
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/openweathermap-ts/-/openweathermap-ts-1.2.10.tgz#7ced3704a9a05931dc9671d85c3d0431a3887dfa"
+  integrity sha512-Zckv2aXN8ENSeAeroces2jJciLWb6aLNXEmvG6pmF+BcIMw2kwRo6++/AKUNoU5suOp47UWA6lllDV0TNm//OA==
+  dependencies:
+    node-fetch "^2.6.0"
 
 opn@^5.5.0:
   version "5.5.0"
@@ -8837,6 +8867,11 @@ vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.10.0:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^6.3.0"
+
+vue-feather@^2.0.0-rc:
+  version "2.0.0-rc"
+  resolved "https://registry.yarnpkg.com/vue-feather/-/vue-feather-2.0.0-rc.tgz#2dcc8f235577ac1fafcf6dcb78908d9f42ef04f3"
+  integrity sha512-rbrGr/Rzy303iZgJIcj9GRm4rFeLIsD7f0+BegXegkYRmvTU768JTWQ8f6IHwO1KoGVp7gmdZi9HLETwe+rfTQ==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
