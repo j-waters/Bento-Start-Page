@@ -22,6 +22,7 @@
 import { defineComponent } from "vue";
 import OpenWeatherMap from "openweathermap-ts";
 import { CurrentResponse } from "openweathermap-ts/dist/types";
+import { getPosition } from "@/utils";
 
 const openWeather = new OpenWeatherMap({
   apiKey: process.env.VUE_APP_WEATHER_API_KEY,
@@ -56,9 +57,11 @@ export default defineComponent({
       if (cached) {
         this.weatherData = JSON.parse(cached);
       }
-      this.weatherData = await openWeather.getCurrentWeatherByCityName({
-        cityName: "southampton",
-      });
+      const position = await getPosition();
+      this.weatherData = await openWeather.getCurrentWeatherByGeoCoordinates(
+        position.coords.latitude,
+        position.coords.longitude
+      );
 
       if (this.weatherData) {
         localStorage.setItem("weatherData", JSON.stringify(this.weatherData));
