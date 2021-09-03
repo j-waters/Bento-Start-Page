@@ -52,9 +52,17 @@ export default defineComponent({
   },
   methods: {
     async updateWeather() {
+      const cached = localStorage.getItem('weatherData')
+      if (cached) {
+        this.weatherData = JSON.parse(cached);
+      }
       this.weatherData = await openWeather.getCurrentWeatherByCityName({
         cityName: "southampton",
       });
+
+      if (this.weatherData) {
+        localStorage.setItem('weatherData', JSON.stringify(this.weatherData))
+      }
     },
     pad(number: number) {
       return ("0" + number).slice(-2);
