@@ -1,49 +1,83 @@
 <template>
-  <div class="tile is-parent"><div class="tile is-child box shortcut-column">
-    <div class="header">
-      <vue-feather type="briefcase"></vue-feather>
+  <div class="card list" :style="style">
+    <div class="head">
+      <vue-feather :type="config.icon"></vue-feather>
     </div>
-    <div v-for="link in links" class="item" :key="link.url">{{link.title}}</div>
-  </div></div>
+    <a
+      v-for="link in config.links"
+      target="_blank"
+      :href="link.url"
+      class="link text-small"
+      aria-expanded="false"
+      :key="link.label"
+      >{{ link.label }}</a
+    >
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import { ColumnConfig } from "@/models/config";
+import { PropertiesHyphen } from "csstype";
 
-export default defineComponent( {
+export default defineComponent({
   name: "ShortcutColumn",
-  data() {
-    return {
-      links: [
-        {title: "reddit", url: "reddit.com"},
-        {title: "mail", url: "mail.google.com"}
-      ]
+  props: {
+    gridColumn: {
+      type: Number,
+      required: true
+    },
+    config: {
+      type: Object as PropType<ColumnConfig>
+    }
+  },
+  computed: {
+    style(): PropertiesHyphen {
+      return {
+        "grid-column": this.gridColumn,
+      }
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.shortcut-column {
-  width: 22vw;
+.list {
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  &:hover {
-     transform: translateY(-0.2rem);
-     box-shadow: 0 10px 10px rgb(0 0 0 / 35%);
-   }
+  grid-row: 3 / span 2;
 }
 
-.header {
+.head {
   margin-top: 3vh;
-  margin-bottom: 2vh;
-  color: black;
+
+  margin-bottom: 0;
+  color: var(--fg);
+
+  ::v-deep .vue-feather__content {
+    width: var(--iconsize);
+    height: var(--iconsize);
+  }
+}
+.link {
+  text-decoration: none;
+  margin-top: 1vh;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
 }
 
-::v-deep .vue-feather__content {
-  width: var(--icon-size);
-  height: var(--icon-size);
+.link:hover {
+  background-color: var(--accent);
+  color: var(--sfg);
+}
+
+@media only screen and (max-width: 68.75em) {
+  .list {
+    display: none;
+  }
 }
 </style>

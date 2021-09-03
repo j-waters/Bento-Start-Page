@@ -1,34 +1,41 @@
 <template>
-  <div class="tile is-parent">
-    <div class="tile is-child box shortcut-tile">
-      <div class="level-item has-text-centered">
-        <vue-feather type="star" size="32"></vue-feather>
-      </div>
-    </div>
-  </div>
+  <a :href="config.url" target="_blank" class="tile card">
+    <vue-feather :type="config.icon"></vue-feather>
+  </a>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import { TileLink } from "@/models/link";
 
 export default defineComponent({
-  name: "ShortcutTile"
+  name: "ShortcutTile",
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    config: Object as PropType<TileLink>
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-.shortcut-tile {
-  padding: 4vh 4vw;
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.tile:hover {
+  background-color: var(--accent);
+}
+.tile:hover ::v-deep svg {
+  stroke: var(--sfg);
+}
 
-  &:hover {
-    transform: translateY(-0.2rem);
-    box-shadow: 0 10px 10px rgb(0 0 0 / 35%);
-    background-color: var(--accent);
-  }
-
-  ::v-deep .vue-feather__content {
-    width: var(--icon-size);
-    height: var(--icon-size);
-  }
+::v-deep .vue-feather__content {
+  width: var(--iconsize);
+  height: var(--iconsize);
 }
 </style>

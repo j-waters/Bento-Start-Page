@@ -1,20 +1,22 @@
 <template>
-  <div class="tile">
-    <shortcut-column></shortcut-column>
-    <shortcut-column></shortcut-column>
-  </div>
+  <shortcut-column :config="config[0]" :grid-column="3"></shortcut-column>
+  <shortcut-column :config="config[1]" :grid-column="4"></shortcut-column>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import ShortcutColumn from "@/components/ShortcutColumn.vue";
+import { ColumnConfig, ColumnsConfig } from "@/models/config";
 
 export default defineComponent( {
   name: "ShortcutColumns",
-  components: { ShortcutColumn }
+  components: { ShortcutColumn },
+  props: {
+    config: {
+      type: Object as PropType<ColumnsConfig>
+    }
+  }
 });
 </script>
 
-<style scoped>
 
-</style>

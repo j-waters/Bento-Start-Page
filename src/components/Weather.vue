@@ -1,22 +1,18 @@
 <template>
-  <div class="tile is-parent">
-    <div class="tile is-child">
-      <div class="weather-block">
-        <div class="date">
-          <div id="month" class="">Sep</div>
-          <div id="day" class="">2</div>
-        </div>
-        <div class="weather">
-          <div class="weather-icon">
-            <img :src="icon">
-          </div>
-          <div class="temperature-value">
-            <p class="">{{ temperature }} °<span class="g">c</span></p>
-          </div>
-          <div class="temperature-description">
-            <p class="">{{ description }}</p>
-          </div>
-        </div>
+  <div class="weather-block">
+    <div class="date text-large">
+      <div id="month">{{ month }}</div>
+      <div id="day">{{ pad(date) }}</div>
+    </div>
+    <div class="weather">
+      <div class="weather-icon">
+        <img :src="icon" />
+      </div>
+      <div class="temperature-value text-medium">
+        <p>{{ temperature }} °<span class="g">c</span></p>
+      </div>
+      <div class="temperature-description text-medium">
+        <p>{{ description }}</p>
       </div>
     </div>
   </div>
@@ -24,69 +20,87 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import OpenWeatherMap from 'openweathermap-ts';
+import OpenWeatherMap from "openweathermap-ts";
 import { CurrentResponse } from "openweathermap-ts/dist/types";
 const openWeather = new OpenWeatherMap({
-  apiKey: '8c0c08361dcb77fbc5ba11eddad850b7'
+  apiKey: process.env.VUE_APP_WEATHER_API_KEY,
+  units: "metric"
 });
 
-var tempUnit = 'C';
-
-const KELVIN = 273.15;
+const monthNames = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
 
 export default defineComponent({
   name: "Weather",
   data() {
     return {
-      weatherData: {} as CurrentResponse
-    }
+      weatherData: {} as CurrentResponse,
+    };
   },
   methods: {
     async updateWeather() {
       this.weatherData = await openWeather.getCurrentWeatherByCityName({
-        cityName: "southampton"
+        cityName: "southampton",
       });
+    },
+    pad(number: number) {
+      return ('0' + number).slice(-2)
     }
   },
   computed: {
     temperature(): string {
       if (!this.weatherData?.main) {
-        return ""
+        return "";
       }
-      let temp = this.weatherData.main.temp
-      console.log(temp)
-      temp =
-        tempUnit == 'C' ? temp : (temp * 9) / 5 + 32;
-
-      return temp.toString();
+      let temp = this.weatherData.main.temp;
+      return temp.toFixed(1);
     },
     icon(): string {
       if (!this.weatherData?.weather) {
-        return ""
+        return "";
       }
-      const weatherIcon = this.weatherData.weather[0].icon
-      return require(`@/assets/icons/${weatherIcon}.png`)
+      const weatherIcon = this.weatherData.weather[0].icon;
+      return require(`@/assets/icons/${weatherIcon}.png`);
     },
-    description(): string  {
+    description(): string {
       if (!this.weatherData?.weather) {
-        return ""
+        return "";
       }
-      return this.weatherData.weather[0].description
+      return this.weatherData.weather[0].description;
+    },
+    month(): string {
+      return monthNames[new Date().getMonth()];
+    },
+    date(): number {
+      return new Date().getDate()
     }
   },
   created() {
-    this.updateWeather()
-  }
+    this.updateWeather();
+  },
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .weather-block {
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 .date {
@@ -102,17 +116,12 @@ export default defineComponent({
   justify-content: center;
 }
 
-.date div{
-  font-size: 12vh;
+.date div {
   font-weight: bold;
-  color: black;
 }
 
-.temperature-value p {
-  font-size: 3vh;
-  font-weight: bolder;
-  margin-left: 15px;
-  color: black;
+#day {
+  margin-left: 20px;
 }
 
 .weather-icon img {
@@ -120,9 +129,18 @@ export default defineComponent({
   height: 70px;
 }
 
-.temperature-description p {
-  font-size: 3vh;
+.temperature-value p {
+  font-weight: bolder;
   margin-left: 15px;
-  color: black;
+}
+
+.temperature-description p {
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 68.75em) {
+  .weather-block {
+    display: none;
+  }
 }
 </style>
