@@ -1,15 +1,15 @@
 <template>
-  <div class="card list" :style="style">
+  <div :style="style" class="card list">
     <div class="head">
       <vue-feather :type="config.icon"></vue-feather>
     </div>
     <a
       v-for="link in config.links"
-      target="_blank"
-      :href="link.url"
-      class="link text-small"
-      aria-expanded="false"
       :key="link.label"
+      :href="link.url"
+      aria-expanded="false"
+      class="link text-small"
+      target="_blank"
       >{{ link.label }}</a
     >
   </div>
@@ -25,19 +25,19 @@ export default defineComponent({
   props: {
     gridColumn: {
       type: Number,
-      required: true
+      required: true,
     },
     config: {
-      type: Object as PropType<ColumnConfig>
-    }
+      type: Object as PropType<ColumnConfig>,
+    },
   },
   computed: {
     style(): PropertiesHyphen {
       return {
         "grid-column": this.gridColumn,
-      }
-    }
-  }
+      };
+    },
+  },
 });
 </script>
 
@@ -60,6 +60,7 @@ export default defineComponent({
     height: var(--iconsize);
   }
 }
+
 .link {
   text-decoration: none;
   margin-top: 1vh;

@@ -22,24 +22,25 @@
 import { defineComponent } from "vue";
 import OpenWeatherMap from "openweathermap-ts";
 import { CurrentResponse } from "openweathermap-ts/dist/types";
+
 const openWeather = new OpenWeatherMap({
   apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-  units: "metric"
+  units: "metric",
 });
 
 const monthNames = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 export default defineComponent({
@@ -56,8 +57,8 @@ export default defineComponent({
       });
     },
     pad(number: number) {
-      return ('0' + number).slice(-2)
-    }
+      return ("0" + number).slice(-2);
+    },
   },
   computed: {
     temperature(): string {
@@ -84,8 +85,8 @@ export default defineComponent({
       return monthNames[new Date().getMonth()];
     },
     date(): number {
-      return new Date().getDate()
-    }
+      return new Date().getDate();
+    },
   },
   created() {
     this.updateWeather();

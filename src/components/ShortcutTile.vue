@@ -1,5 +1,5 @@
 <template>
-  <a :href="config.url" target="_blank" class="tile card">
+  <a :href="config.url" class="tile card" target="_blank">
     <vue-feather :type="config.icon"></vue-feather>
   </a>
 </template>
@@ -13,9 +13,9 @@ export default defineComponent({
   props: {
     index: {
       type: Number,
-      required: true
+      required: true,
     },
-    config: Object as PropType<TileLink>
+    config: Object as PropType<TileLink>,
   },
 });
 </script>
@@ -27,9 +27,11 @@ export default defineComponent({
   align-items: center;
   width: 100%;
 }
+
 .tile:hover {
   background-color: var(--accent);
 }
+
 .tile:hover ::v-deep svg {
   stroke: var(--sfg);
 }

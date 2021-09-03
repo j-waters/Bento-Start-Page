@@ -1,6 +1,11 @@
 <template>
-  <div class="tiles" id="buttonsContainer">
-    <shortcut-tile v-for="(link, i) in config" :index="i" :config="link" :key="link.icon"></shortcut-tile>
+  <div id="buttonsContainer" class="tiles">
+    <shortcut-tile
+      v-for="(link, i) in config"
+      :key="link.icon"
+      :config="link"
+      :index="i"
+    ></shortcut-tile>
   </div>
 </template>
 
@@ -13,13 +18,12 @@ export default defineComponent({
   name: "ShortcutTiles",
   components: { ShortcutTile },
   props: {
-    config: Array as PropType<TileLink[]>
+    config: Array as PropType<TileLink[]>,
   },
 });
 </script>
 
 <style lang="scss" scoped>
-
 .tiles {
   grid-row: 3 / span 2;
   grid-column: 1 / span 2;

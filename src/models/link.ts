@@ -3,7 +3,7 @@ interface Link {
 }
 
 export interface ListLink extends Link {
-  label: string
+  label: string;
 }
 
 export interface TileLink extends Link {

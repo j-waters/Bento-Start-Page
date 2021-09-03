@@ -55,40 +55,32 @@ export default defineComponent({
           },
         ],
         tiles: [
-          {url: 'https://github.com/', icon: 'github'},
-          {url: 'https://youtube.com/', icon: 'youtube'},
-          {url: 'https://mail.google.com/', icon: 'mail'},
-          {url: 'https://maps.google.com/', icon: 'map'},
-          {url: 'https://calendar.google.com/', icon: 'calendar'},
-          {url: 'https://drive.google.com/', icon: 'folder'},
+          { url: "https://github.com/", icon: "github" },
+          { url: "https://youtube.com/", icon: "youtube" },
+          { url: "https://mail.google.com/", icon: "mail" },
+          { url: "https://maps.google.com/", icon: "map" },
+          { url: "https://calendar.google.com/", icon: "calendar" },
+          { url: "https://drive.google.com/", icon: "folder" },
         ],
         style: {
-          iconSize: '4vh',
+          iconSize: "4vh",
           foreground: "#d8dee9",
           fontSizes: {
-            giant: '12vh',
-            large: '8vh',
-            medium: '3vh',
-            small: '2vh'
+            giant: "12vh",
+            large: "8vh",
+            medium: "3vh",
+            small: "2vh",
           },
           accent: "#ab47bc",
           background: "#292D3E",
           backgroundSecondary: "#32364C",
-          accentForeground: "#d8dee9"
+          accentForeground: "#d8dee9",
         },
         greetings: {
-          morning: [
-            "Good morning %!"
-          ],
-          afternoon: [
-            "Good afternoon %!"
-          ],
-          evening: [
-            "Good evening %!"
-          ],
-          night: [
-            "Good night %!"
-          ],
+          morning: ["Good morning %!"],
+          afternoon: ["Good afternoon %!"],
+          evening: ["Good evening %!"],
+          night: ["Good night %!"],
         },
         name: "James",
       } as Config,
@@ -102,34 +94,34 @@ export default defineComponent({
 
 .text {
   &-giant {
-    font-size: v-bind('config.style.fontSizes.giant');
+    font-size: v-bind("config.style.fontSizes.giant");
   }
 
   &-large {
-    font-size: v-bind('config.style.fontSizes.large');
+    font-size: v-bind("config.style.fontSizes.large");
   }
 
   &-medium {
-    font-size: v-bind('config.style.fontSizes.medium');
+    font-size: v-bind("config.style.fontSizes.medium");
   }
 
   &-small {
-    font-size: v-bind('config.style.fontSizes.small');
+    font-size: v-bind("config.style.fontSizes.small");
   }
 }
 
 /* V A R I A B L E S */
 
 * {
-  --iconsize: v-bind('config.style.iconSize');
+  --iconsize: v-bind("config.style.iconSize");
 
   /* Light theme  */
-  --accent: v-bind('config.style.accent');
-  --bg: v-bind('config.style.background');
-  --sbg: v-bind('config.style.backgroundSecondary');
+  --accent: v-bind("config.style.accent");
+  --bg: v-bind("config.style.background");
+  --sbg: v-bind("config.style.backgroundSecondary");
 
-  --fg: v-bind('config.style.foreground');
-  --sfg: v-bind('config.style.accentForeground');
+  --fg: v-bind("config.style.foreground");
+  --sfg: v-bind("config.style.accentForeground");
 
   /* Image background  */
 
@@ -155,8 +147,9 @@ export default defineComponent({
   transition: 0.2s ease-in-out;
 }
 
-div, a {
-  color: v-bind('config.style.foreground')
+div,
+a {
+  color: v-bind("config.style.foreground");
 }
 
 .withImageBackground {
@@ -193,6 +186,7 @@ body {
   transform: translateY(-0.2rem);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
 }
+
 /* M E D I A - Q U E R I E S */
 
 @media only screen and (max-width: 68.75em) {
