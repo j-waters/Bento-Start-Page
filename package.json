@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "feather-icons": "^4.28.0",
+    "mosha-vue-toastify": "^1.0.21",
     "openweathermap-ts": "^1.2.10",
     "vue": "^3.0.0",
     "vue-feather": "^2.0.0-rc"

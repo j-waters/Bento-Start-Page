@@ -52,7 +52,7 @@ export default defineComponent({
   },
   methods: {
     async updateWeather() {
-      const cached = localStorage.getItem('weatherData')
+      const cached = localStorage.getItem("weatherData");
       if (cached) {
         this.weatherData = JSON.parse(cached);
       }
@@ -61,7 +61,7 @@ export default defineComponent({
       });
 
       if (this.weatherData) {
-        localStorage.setItem('weatherData', JSON.stringify(this.weatherData))
+        localStorage.setItem("weatherData", JSON.stringify(this.weatherData));
       }
     },
     pad(number: number) {

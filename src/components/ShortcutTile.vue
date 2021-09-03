@@ -1,5 +1,5 @@
 <template>
-  <a :href="config.url" class="tile card" target="_blank">
+  <a :href="config.url" class="tile card animated" target="_blank">
     <vue-feather :type="config.icon"></vue-feather>
   </a>
 </template>

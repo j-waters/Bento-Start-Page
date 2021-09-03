@@ -1,5 +1,9 @@
 <template>
   <body>
+    <config-button
+      :config="config"
+      @updateConfig="updateConfig($event)"
+    ></config-button>
     <div class="container">
       <clock :config="{ ...config.greetings, name: config.name }"></clock>
       <weather></weather>
@@ -11,28 +15,54 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Component, defineComponent } from "vue";
 import ShortcutTiles from "@/components/ShortcutTiles.vue";
-import ShortcutColumn from "@/components/ShortcutColumn.vue";
 import Clock from "@/components/Clock.vue";
 import Weather from "@/components/Weather.vue";
 import { Config } from "@/models/config";
 import ShortcutColumns from "@/components/ShortcutColumns.vue";
-import defaultConfig from "@/assets/default-config"
+import defaultConfig from "@/assets/default-config";
+import ConfigButton from "@/components/ConfigButton.vue";
+
+import { createToast, withProps } from "mosha-vue-toastify";
+import "mosha-vue-toastify/dist/style.css";
+import ConfigError from "@/components/ConfigError.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    ConfigButton,
     ShortcutColumns,
     ShortcutTiles,
     Weather,
     Clock,
-    ShortcutColumn,
   },
   data() {
     return {
       config: defaultConfig,
     };
+  },
+  methods: {
+    updateConfig(config: Config) {
+      this.config = config;
+      localStorage.setItem("config", JSON.stringify(this.config));
+    },
+  },
+  created() {
+    const config = localStorage.getItem("config");
+    if (config) {
+      this.updateConfig(JSON.parse(config));
+    }
+  },
+  errorCaptured(error, instance: Component | null, info) {
+    const config = JSON.stringify(this.config, null, 4);
+
+    this.updateConfig(defaultConfig);
+
+    createToast(withProps(ConfigError, { error, config }), {
+      type: "danger",
+      timeout: -1,
+    });
   },
 });
 </script>
@@ -83,6 +113,8 @@ export default defineComponent({
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.7)
   ); /* Filter color */
+
+  --transition-duration: 0.2s;
 }
 
 /* S T Y L E S */
@@ -92,7 +124,6 @@ export default defineComponent({
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  transition: 0.2s ease-in-out;
 }
 
 div,
@@ -128,15 +159,42 @@ html {
   padding: 20px;
 }
 
+.animated {
+  transition: var(--transition-duration) ease-in-out;
+}
+
 .card {
   background-color: var(--sbg);
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.35);
   border-radius: 5px;
 }
 
-.card:hover {
+.raise {
+}
+
+.card.animated:hover {
   transform: translateY(-0.2rem);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
 }
 
 /* M E D I A - Q U E R I E S */
